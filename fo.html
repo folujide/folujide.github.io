@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6', // Blue-500
+                        secondary: '#1e293b', // Slate-800
+                        accent: '#10b981', // Emerald-500
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for elegant iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Subtle animated background gradient */
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism utility for cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo/Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="text-2xl font-bold text-secondary tracking-tight">Femi<span
+                            class="text-primary">Olujide</span></a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-slate-600 hover:text-primary transition-colors font-medium">About</a>
+                    <a href="#experience"
+                        class="text-slate-600 hover:text-primary transition-colors font-medium">Experience</a>
+                    <a href="#projects"
+                        class="text-slate-600 hover:text-primary transition-colors font-medium">Projects</a>
+                    <a href="#contact"
+                        class="bg-primary text-white px-5 py-2 rounded-full hover:bg-blue-600 transition-colors shadow-md hover:shadow-lg font-medium">Get
+                        in Touch</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md">About</a>
+                <a href="#experience"
+                    class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md">Experience</a>
+                <a href="#projects"
+                    class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md">Projects</a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-base font-medium text-primary hover:bg-slate-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <!-- Decorative background blobs -->
+        <div
+            class="absolute top-20 left-10 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+        </div>
+        <div
+            class="absolute top-40 right-10 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 fade-in-up">
+            <div
+                class="inline-block mb-4 px-4 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide uppercase shadow-sm">
+                Available for work
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-secondary mb-6 leading-tight">
+                Hi, I'm <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Femi</span>.<br>
+                I build and deliver user centric products with scalable design.
+            </h1>
+            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                I'm a technical program manager specializing in delivery of information security and business systems
+                products/programs.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#about"
+                    class="bg-white text-secondary border border-slate-200 px-8 py-3 rounded-full hover:bg-slate-50 transition-all shadow-sm hover:shadow-md font-medium flex items-center justify-center gap-2">
+                    <i class="ph ph-person text-xl"></i> About Me
+                </a>
+                <a href="#projects"
+                    class="bg-secondary text-white px-8 py-3 rounded-full hover:bg-slate-700 transition-all shadow-lg hover:shadow-xl font-medium flex items-center justify-center gap-2">
+                    View My Work <i class="ph ph-arrow-right"></i>
+                </a>
+                <a href="https://github.com" target="_blank"
+                    class="bg-white text-secondary border border-slate-200 px-8 py-3 rounded-full hover:bg-slate-50 transition-all shadow-sm hover:shadow-md font-medium flex items-center justify-center gap-2">
+                    <i class="ph ph-github-logo text-xl"></i> GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white/50 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center gap-12">
+                <div class="w-full fade-in-up">
+                    <div class="flex items-center gap-4 mb-6">
+                        <h2 class="text-3xl font-bold text-secondary">About Me</h2>
+                        <div class="h-px bg-slate-300 flex-grow"></div>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
+                        Hello! My name is Femi and I enjoy building things that live on the internet. My interest is in
+                        information security and SaaS Systems. My interest started back in 2018 when I decided to try to
+                        secure my home network and understand the vulnerability exposure of the assets on the network —
+                        turns out this exploration and building automations taught me a lot about HTML, Python, &
+                        security vulnerabilties!
+                    </p>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
+                        Fast-forward to today, and I've had the privilege of working at multiple technology
+                        organizations, ranging from start-ups to Fortune 500s. My main focus these days is building
+                        accessible, and user centric inclusive products with security at the core.
+                    </p>
+
+                    <h3 class="text-lg font-semibold text-secondary mb-3">Technologies I've been working with recently:
+                    </h3>
+                    <ul class="grid grid-cols-2 gap-2 text-slate-600">
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            Python</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            Docker</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            Flask</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            Claude API</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            React</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            Node.js</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            Tailwind CSS</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-caret-right text-primary text-sm"></i>
+                            nmap</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Experience Section -->
+    <section id="experience" class="py-24 relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12 fade-in-up">
+                <h2 class="text-3xl font-bold text-secondary">Outside of Work</h2>
+                <div class="h-px bg-slate-300 flex-grow"></div>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Hiking -->
+                <div class="fade-in-up relative pl-8 border-l-2 border-blue-200">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 bg-primary rounded-full shadow-[0_0_0_4px_#eff6ff]">
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                        <h3 class="text-xl font-bold text-secondary">Nature & Hiking</h3>
+                    </div>
+                    <ul class="mt-4 space-y-3 text-slate-600 list-none">
+                        <li
+                            class="relative pl-6 before:content-['▹'] before:absolute before:left-0 before:text-primary">
+                            Exploring new locations, hiking trails and challenging myself in the great california
+                            outdoors whenever possible.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sports -->
+                <div class="fade-in-up relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-300 rounded-full"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                        <h3 class="text-xl font-bold text-secondary">Sports Enthusiast</h3>
+                    </div>
+                    <ul class="mt-4 space-y-3 text-slate-600 list-none">
+                        <li
+                            class="relative pl-6 before:content-['▹'] before:absolute before:left-0 before:text-primary">
+                            I play soccer and tennis. I play in the USTA league and also volunteer as a soccer coach for
+                            youths in the community. I find it rewarding to help young athletes develop their skills and
+                            foster a love for the game.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-900 text-white relative">
+        <!-- SVG wave top -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none transform -translate-y-full">
+            <svg class="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C73.81,36.59,142.92,72.7,208.5,86.27,249.4,94.75,286.9,90.2,321.39,56.44Z"
+                    class="fill-slate-900"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-16 fade-in-up">
+                <h2 class="text-3xl font-bold">Some Things I've Built</h2>
+                <div class="h-px bg-slate-700 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project Card 1 -->
+                <div
+                    class="bg-slate-800 rounded-xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 fade-in-up group">
+                    <div class="relative h-48 overflow-hidden bg-slate-700">
+                        <img src="https://placehold.co/600x400/1e293b/3b82f6?text=Project+One" alt="Project 1"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+                        <div
+                            class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-primary text-sm font-mono">Featured Project</span>
+                            <div class="flex gap-3 text-slate-300">
+                                <a href="#" class="hover:text-primary transition-colors"><i
+                                        class="ph ph-github-logo text-2xl"></i></a>
+                                <a href="#" class="hover:text-primary transition-colors"><i
+                                        class="ph ph-arrow-square-out text-2xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors cursor-pointer">
+                            Vulnerability Scanner</h3>
+                        <p class="text-slate-400 mb-6 text-sm">
+                            An AI-powered network vulnerability scanning platform with real-time response. Runs in a
+                            hardened Docker container, uses nmap to scan the network and AI to write the risk report
+                            based on CVD database information.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
+                            <li class="bg-slate-700 px-2 py-1 rounded">Python</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">Flask</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">Gunicorn</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">nmap</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">ClaudeAPI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 fade-in-up group"
+                    style="transition-delay: 100ms;">
+                    <div class="relative h-48 overflow-hidden bg-slate-700">
+                        <img src="https://placehold.co/600x400/1e293b/10b981?text=Project+Two" alt="Project 2"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+                        <div
+                            class="absolute inset-0 bg-emerald-500/20 group-hover:bg-transparent transition-colors duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-accent text-sm font-mono">Featured Project</span>
+                            <div class="flex gap-3 text-slate-300">
+                                <a href="#" class="hover:text-accent transition-colors"><i
+                                        class="ph ph-github-logo text-2xl"></i></a>
+                                <a href="#" class="hover:text-accent transition-colors"><i
+                                        class="ph ph-arrow-square-out text-2xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-accent transition-colors cursor-pointer">Asset
+                            Crawler
+                        </h3>
+                        <p class="text-slate-400 mb-6 text-sm">
+                            An asset management app that scans your network, discovers active devices, identifies
+                            hostnames, OS information , and maintains a live inventory. Flags any new devices since last
+                            scan, to highlight presence of unauthorised systems or shadow IT.
+
+                        </p>
+                        <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
+                            <li class="bg-slate-700 px-2 py-1 rounded">Python</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">Claude API</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">nmap</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 fade-in-up group"
+                    style="transition-delay: 200ms;">
+                    <div class="relative h-48 overflow-hidden bg-slate-700">
+                        <img src="https://placehold.co/600x400/1e293b/a855f7?text=Project+Three" alt="Project 3"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+                        <div
+                            class="absolute inset-0 bg-purple-500/20 group-hover:bg-transparent transition-colors duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-purple-400 text-sm font-mono">Featured Project</span>
+                            <div class="flex gap-3 text-slate-300">
+                                <a href="#" class="hover:text-purple-400 transition-colors"><i
+                                        class="ph ph-github-logo text-2xl"></i></a>
+                                <a href="#" class="hover:text-purple-400 transition-colors"><i
+                                        class="ph ph-arrow-square-out text-2xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-purple-400 transition-colors cursor-pointer">
+                            Incident Response Bot</h3>
+                        <p class="text-slate-400 mb-6 text-sm">
+                            An AI-powered Security Operations Center (SOC) incident response chatbot that reads your
+                            existing runbooks and guides security teams through any incident, and how to handle it step
+                            by step.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
+                            <li class="bg-slate-700 px-2 py-1 rounded">Flask</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">Python</li>
+                            <li class="bg-slate-700 px-2 py-1 rounded">Claude API</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12 fade-in-up">
+                <a href="https://github.com" target="_blank"
+                    class="inline-block border border-slate-600 text-slate-300 hover:text-white hover:border-white px-6 py-3 rounded-full transition-colors font-mono text-sm">
+                    View More on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+            <span class="text-primary font-mono mb-4 block">04. What's Next?</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary mb-6">Get In Touch</h2>
+            <p class="text-slate-600 mb-10 text-lg">
+                I'm availabe for any new opportunities, my inbox is always open. Whether you have
+                an opportunity to fill, a question or just want to say hi, reach out and I'll get back to you!
+            </p>
+
+            <!-- Custom stylized button to replace alert/mailto logic if needed, but keeping it simple here -->
+            <a href="mailto:femiolujide@yahoo.com"
+                class="inline-block bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-medium transition-colors text-lg shadow-[4px_4px_0_0_#3b82f6] hover:shadow-[0_0_0_0_#3b82f6] hover:translate-x-[4px] hover:translate-y-[4px]">
+                Say Hello
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-500 font-mono text-sm bg-slate-50 border-t border-slate-200">
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-github-logo text-2xl"></i></a>
+            <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-linkedin-logo text-2xl"></i></a>
+            <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-twitter-logo text-2xl"></i></a>
+            <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-envelope-simple text-2xl"></i></a>
+        </div>
+        <p>Built by Femi Olujide</p>
+        <p class="mt-2 text-xs">Designed with ❤️ and Tailwind CSS</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const icon = btn.querySelector('i');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('ph-x');
+                    icon.classList.add('ph-list');
+                } else {
+                    icon.classList.remove('ph-list');
+                    icon.classList.add('ph-x');
+                }
+            });
+
+            // Close mobile menu on link click
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('ph-x');
+                    icon.classList.add('ph-list');
+                });
+            });
+
+            // --- Navbar styling on scroll ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-card', 'shadow-sm', 'py-0');
+                    navbar.classList.remove('py-2'); // Adjust padding if needed
+                } else {
+                    navbar.classList.remove('glass-card', 'shadow-sm', 'py-0');
+                    navbar.classList.add('py-2');
+                }
+            });
+
+            // --- Intersection Observer for Fade-in Animations ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: stop observing once it has animated in
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Initial trigger for elements already in view on load
+            setTimeout(() => {
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>
